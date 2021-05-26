@@ -31,12 +31,10 @@ def loadCompactLooks(savepath, filetype = "csv"):
   # Get updates as matrices
   temp = {}
   for field in [
-    "mean_update1_left",
-    "mean_update1_right",
-    "mean_update2_left",
-    "mean_update2_right",
+    "mean_update_left",
+    "mean_update_right",
     "sqrt_cov_update",
-    "random"
+    "random_update"
   ]:
     temp[field] = do_load( field )
   
@@ -100,10 +98,10 @@ def formOneLook(knockoffs, vars_to_omit, updates, k):
 #' Output can be added to knockoffs to correct for removal of a variable.
 #'
 def getMeanUpdate(updates):
-  return updates['mean_update1_left'] @ updates['mean_update1_right'] + \
-         updates['mean_update2_left'] @ updates['mean_update2_right']
+  return updates['mean_update_left'] @ updates['mean_update_right'] 
+
   
 
 def getRandomUpdate(updates):
-  return updates['random'] @ updates['sqrt_cov_update']
+  return updates['random_update'] @ updates['sqrt_cov_update']
 
