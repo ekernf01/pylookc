@@ -7,7 +7,7 @@ Since knockoffs can be paired with arbitrary variable importance measures, the i
 The intended workflow is: 
 
 - Efficiently generate the LOOKs in R and save them to disk
-- Read them into python and compute variable importances
+- Read them into python and compute variable importances in Python
 - Control FDR by reading the result back into R, or by implementing the rest of the knockoff filter yourself in Python
 
 The main advantage of this workflow: for very high-dimensional applications, this specific storage format is much more efficient than a naive approach. LOOKs can be algebraically decomposed and saved in O(ND) space, rather O(ND^2), where D is the data dimension and N is the number of observations. Re-assembling them is complicated and highly specific to our approach, so reassembly is implemented here. The remaining downstream steps of the knockoff filter are not as complicated and not as specific to our work, so with apologies they are not implemented here.
